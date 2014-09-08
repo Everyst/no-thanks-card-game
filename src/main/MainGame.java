@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import model.*;
 import model.players.*;
@@ -14,16 +15,19 @@ public class MainGame {
 	
 	
 	public static void main(String[] args){
+		Random random = new Random(System.nanoTime());
+		
 		// Set up the deck
 		Deck deck = new Deck();
 		
 		// Set up the players
 		List<Player> players = new ArrayList<Player>(numberOfPlayers);
 		
-		// One PVLTT AI and others all RandomAI
-		players.add(new PointValueLessThanTenAI());
-		for (int i = 0; i < numberOfPlayers-1; i++){
-			players.add(new RandomAI("RandomAI_"+i));
+		for (int i = 0; i < numberOfPlayers; i++){
+			//players.add(new RandomAI("RandomAI_"+i));
+			
+			int threshold = random.nextInt(33) + 3;
+			players.add(new NetValueLessThanXAI("NV<" + threshold + "_" + i, threshold));
 		}
 		
 		Collections.shuffle(players); // shuffle the order of players
@@ -61,6 +65,8 @@ public class MainGame {
 		}
 		
 		Collections.sort(players);
+		
+		System.out.println("\nGAME OVER");
 		
 		for (int i = 0; i < numberOfPlayers; i++){
 			System.out.println("Player " + players.get(i) + " got " + players.get(i).getStatus());

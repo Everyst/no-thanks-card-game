@@ -100,7 +100,7 @@ public abstract class Player implements Comparable<Player> {
 	}
 	
 	public String getStatus(){
-		return "Cards: " + cards + ", Tokens: " + tokens + ", Points: " + calculatePoints();
+		return "Points: " + calculatePoints() + ", Cards: " + cards + ", Tokens: " + tokens;
 	}
 	
 	/**

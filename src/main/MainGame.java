@@ -20,8 +20,10 @@ public class MainGame {
 		// Set up the players
 		List<Player> players = new ArrayList<Player>(numberOfPlayers);
 		
-		for (int i = 0; i < numberOfPlayers; i++){
-			players.add(new RandomAI(""+i));
+		// One PVLTT AI and others all RandomAI
+		players.add(new PointValueLessThanTenAI());
+		for (int i = 0; i < numberOfPlayers-1; i++){
+			players.add(new RandomAI("RandomAI_"+i));
 		}
 		
 		Collections.shuffle(players); // shuffle the order of players
@@ -51,9 +53,11 @@ public class MainGame {
 				}
 			}
 			
-			System.out.println("Player " + players.get(currentPlayer).getName() + " put a token on card " + currentCard);
-			
-			nextPlayer();
+			if (currentCard != null){
+				System.out.println("Player " + players.get(currentPlayer).getName() + " put a token on card " + currentCard);
+				
+				nextPlayer();
+			}
 		}
 		
 		Collections.sort(players);

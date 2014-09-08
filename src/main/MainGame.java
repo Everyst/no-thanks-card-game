@@ -24,7 +24,8 @@ public class MainGame {
 			players.add(new RandomAI(""+i));
 		}
 		
-		Collections.shuffle(players);
+		Collections.shuffle(players); // shuffle the order of players
+		System.out.println("The player order is: " + players);
 		
 		List<Player> otherPlayers = new ArrayList<Player>(numberOfPlayers-1); // Will store all players who aren't the current player.
 		
@@ -50,13 +51,15 @@ public class MainGame {
 				}
 			}
 			
+			System.out.println("Player " + players.get(currentPlayer).getName() + " put a token on card " + currentCard);
+			
 			nextPlayer();
 		}
 		
 		Collections.sort(players);
 		
 		for (int i = 0; i < numberOfPlayers; i++){
-			System.out.println("Player " + players.get(i).getName() + " got " + players.get(i));
+			System.out.println("Player " + players.get(i) + " got " + players.get(i).getStatus());
 		}
 		
 	}

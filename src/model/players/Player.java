@@ -96,6 +96,10 @@ public abstract class Player implements Comparable<Player> {
 	
 	@Override
 	public String toString(){
+		return this.name;
+	}
+	
+	public String getStatus(){
 		return "Cards: " + cards + ", Tokens: " + tokens + ", Points: " + calculatePoints();
 	}
 	

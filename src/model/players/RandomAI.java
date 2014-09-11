@@ -19,7 +19,7 @@ public class RandomAI extends Player{
 	Random random = new Random(System.nanoTime());
 	
 	@Override
-	protected boolean chooseMove(Card currentCard, List<Player> otherPlayers) {
+	protected boolean chooseMove(Card currentCard, List<Player> otherPlayers, int numberOfCardsRemaining) {
 		// Ignore the inputs and choose to take the card with a 50% chance.
 		if (random.nextInt(2) == 0){
 			return false;

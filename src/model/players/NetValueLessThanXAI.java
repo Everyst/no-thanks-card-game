@@ -22,7 +22,7 @@ public class NetValueLessThanXAI extends Player{
 	}
 	
 	@Override
-	protected boolean chooseMove(Card currentCard, List<Player> otherPlayers) {
+	protected boolean chooseMove(Card currentCard, List<Player> otherPlayers, int numberOfCardsRemaining) {
 		// Take the card if you have the card above it.
 		for (Card myCard : cards){
 			if (currentCard.getValue() + 1 == myCard.getValue()){

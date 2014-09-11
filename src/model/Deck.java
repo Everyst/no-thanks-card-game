@@ -28,6 +28,11 @@ public class Deck {
 	}
 	
 	
+	public int cardsRemaining(){
+		return cards.size();
+	}
+	
+	
 	private void shuffleDeck(){
 		Collections.shuffle(cards);
 	}
